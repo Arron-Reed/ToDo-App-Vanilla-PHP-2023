@@ -29,8 +29,29 @@ body {
     box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.2);
 }
 
+.done-button {
+    background-color: #ddd;
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 0.8em;
+    opacity: 0.4;
+}
+
+.dogs li:hover .done-button {
+    opacity: 1;
+
+}
+
+
+
 .bull {
     background-color: pink;
     border: 1px solid black;
     padding: 30px 40px;
 }
+
+.taskBox {
+    border: 1px solid black;
+}
+
+

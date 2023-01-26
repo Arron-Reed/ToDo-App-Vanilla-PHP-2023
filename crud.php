@@ -22,7 +22,7 @@ function createTask($taskTitle, $taskDescription, $userId)
 
     $query =<<<SQL
     INSERT INTO task (`taskTitle`, `taskDescription`, `taskDone`, `taskDate`, `userId`) 
-    VALUES (:taskTitle,	:taskDescription,	0,	NULL,	:userId)
+    VALUES (:taskTitle,	:taskDescription,	0,	NOW(),	:userId)
     SQL;
 
     try {

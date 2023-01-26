@@ -94,6 +94,7 @@ echo "Password: ".$password."<br>";
         print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "'>");
         print($task['taskTitle']);
         print("</a>");
+        print("<a href='#' class='done-button'>Mark as done</a>");
         print(" - ");
         print("<a href='" . $_SERVER["PHP_SELF"] . "?deletetaskId=" . $task["taskId"] . "' class='potato'>");
         print("[remove]");
