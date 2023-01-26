@@ -14,10 +14,10 @@
 ?>
 
 <?php
-
 /*
+
 error_reporting(0);
-*/
+
 
 $saved_username = "oliver";
 $saved_password = "1234";
@@ -41,62 +41,61 @@ else
 {
     echo "Login Failed";
 }
-/*
+
 echo "Vi har mottagit:<br>";
 echo "Username: ".$username."<br>";
 echo "Password: ".$password."<br>";
 */
 ?>
 
-<a href="index2.php" > Hello </a>
-
     <h1>Hello there!</h1>
 
 <div class="box">
-    <h2>Add new book to collection</h2>
+    <h2>Add a new task</h2>
 
     <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-        <label for="inputTitle">Title:</label><br>
-        <input type="text" name="bookTitle" id="inputTitle"><br>
-        <label for="inputAuthor">Author:</label><br>
-        <input type="text" name="bookAuthor" id="inputAuthor"><br>
-        <label for="inputPrice">Price:</label><br>
-        <input type="text" name="bookPrice" id="inputPrice"><br>
-        <label for="inputCategory">Category:</label><br>
-        <input type="text" name="bookCategory" id="inputCategory"><br>
-        <input type="submit" value="Add book">
+        <label for="inputTitle">Task:</label><br>
+        <input type="text" name="taskTitle" id="inputTitle"><br>
+        <label for="inputDescription">Description:</label><br>
+        <input type="text" name="taskDescription" id="inputDescription"><br>
+        <label for="inputUser">User:</label><br>
+        <input type="text" name="userId" id="inputUser"><br>
+        <input type="submit" value="Add task">
     </form>
 </div>
+
+<a href="index2.php" class="bull"> Link to another page </a>
+
     <?php
 
-    if(isset($_POST["bookTitle"])){
-        createBook($_POST["bookTitle"], $_POST["bookAuthor"], $_POST["bookPrice"], $_POST["bookCategory"]);
+    if(isset($_POST["taskTitle"])){
+        createTask($_POST["taskTitle"], $_POST["taskDescription"], $_POST["userId"]);
     }
 
-    if(isset($_POST["updateTitle"])){
-        updateBook($_POST["updateId"], $_POST["updateTitle"], $_POST["updateAuthor"], $_POST["updatePrice"]);
+    if(isset($_POST["updatetaskTitle"])){
+        updateTask($_POST["updatetaskId"], $_POST["updatetaskTitle"], $_POST["updatetaskDescription"], $_POST["updateuserId"]);
     }
 
     ?>
 <div class="dogs">
-    <h2>Books</h2>
+    <h2>Tasks</h2>
 
     <?php
 
-    if(isset($_GET["deleteId"]))
+    if(isset($_GET["deletetaskId"]))
     {
-        deleteBook($_GET["deleteId"]);
+        deleteTask($_GET["deletetaskId"]);
     }
 
     echo("<ul>");
-    foreach(getAllBooks() as $book)
+    foreach(getAllTasks() as $task)
     {
         print("<li>");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?showId=" . $book["bokId"] . "'>");
-        print($book['bokTitel']);
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "'>");
+        print($task['taskTitle']);
         print("</a>");
         print(" - ");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?deleteId=" . $book["bokId"] . "' class='potato'>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?deletetaskId=" . $task["taskId"] . "' class='potato'>");
         print("[remove]");
         print("</a>");
         print("</li>");
@@ -106,22 +105,22 @@ echo "Password: ".$password."<br>";
     ?>
 </div>
     <?php
-    if(isset($_GET["showId"]))
+    if(isset($_GET["showtaskId"]))
     {
-        $book = getBook($_GET["showId"]);
+        $task = getTask($_GET["showtaskId"]);
 
-        print("<h2>Selected book</h2>");
+        print("<h2>Selected Task</h2>");
     ?>
        
     <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-        <label for="updateTitle">Title:</label><br>
-        <input type="text" name="updateTitle" id="updateTitle" value="<? print($book["bokTitel"]) ?> "><br>
-        <label for="updateAuthor">Author:</label><br>
-        <input type="text" name="updateAuthor" id="updateAuthor" value="<? print($book["bokForfattare"]) ?> "><br>
-        <label for="updatePrice">Price:</label><br>
-        <input type="text" name="updatePrice" id="updatePrice" value="<? print($book["bokPris"]) ?> "><br>
-        <input type="hidden" name="updateId" value="<? print($_GET["showId"]) ?>"><br>
-        <input type="submit" value="Update book">
+        <label for="updatetaskTitle">Task:</label><br>
+        <input type="text" name="updatetaskTitle" id="updatetaskTitle" value="<? print($task["taskTitle"]) ?> "><br>
+        <label for="updatetaskDescription">Description:</label><br>
+        <input type="text" name="updatetaskDescription" id="updatetaskDescription" value="<? print($task["taskDescription"]) ?> "><br>
+        <label for="updateuserId">User nr:</label><br>
+        <input type="text" name="updateuserId" id="updateuserId" value="<? print($task["userId"]) ?> "><br>
+        <input type="hidden" name="updatetaskId" value="<? print($_GET["showtaskId"]) ?>"><br>
+        <input type="submit" value="Update task">
     </form>
 
     <?php
@@ -129,18 +128,17 @@ echo "Password: ".$password."<br>";
     ?>
 
 <?php
-    echo "<p>Just nu kostar böcker i snitt: " . getAverageBookPrice()["bokMedelPris"] . "</p>";
 
     //GET RELATIONS
 
-    echo "<h2>Book-kategorirelation</h2>";
+    echo "<h2>Task-kategorirelation</h2>";
     echo("<ul>");
-    foreach(getBookCategoryRelation() as $book)
+    foreach(getTaskRelation() as $task)
     {
         print("<li>");
-        print($book['bokTitel']);
+        print($task['taskTitle']);
         print(" - ");
-        print($book['kategoriNamn']);
+        print($task['userId']);
         print("</li>");
     }
     echo("</ul>");

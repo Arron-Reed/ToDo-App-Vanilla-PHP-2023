@@ -12,26 +12,24 @@ function sanitera($input)
 
 // Create 
 
-function createBook($title, $author, $price, $category)
+function createTask($taskTitle, $taskDescription, $userId)
 { 
     $conn = prepareDB();
 
-    $title = sanitera($title);
-    $author = sanitera($author);
-    $price = sanitera($price);
-    $category = sanitera($category);
+    $taskTitle = sanitera($taskTitle);
+    $taskDescription = sanitera($taskDescription);
+    $userId = sanitera($userId);
 
     $query =<<<SQL
-    INSERT INTO bok (`bokTitel`, `bokForfattare`, `bokBeskrivn`, `bokIsbn`, `bokPris`, `bokKategoriId`) 
-    VALUES (:title,	:author,	NULL,	NULL,	:price,	:category)
+    INSERT INTO task (`taskTitle`, `taskDescription`, `taskDone`, `taskDate`, `userId`) 
+    VALUES (:taskTitle,	:taskDescription,	0,	NULL,	:userId)
     SQL;
 
     try {
         $stmt = $conn->prepare($query);
-        $stmt->bindParam("title", $title);
-        $stmt->bindParam("author", $author);
-        $stmt->bindParam("price", $price);
-        $stmt->bindParam("category", $category);
+        $stmt->bindParam("taskTitle", $taskTitle);
+        $stmt->bindParam("taskDescription", $taskDescription);
+        $stmt->bindParam("userId", $userId);
         $stmt->execute();
     }
     catch (PDOException $error) {
@@ -41,17 +39,17 @@ function createBook($title, $author, $price, $category)
 
 // Get one (Read)
 
-function getBook($bookId)
+function getTask($taskId)
 {
     $conn = prepareDB();
 
     $query =<<<SQL
-    SELECT * FROM bok WHERE bokId=:bookId;
+    SELECT * FROM task WHERE taskId=:taskId;
     SQL;
 
     try {
         $stmt = $conn->prepare($query);
-        $stmt->bindParam("bookId", $bookId);
+        $stmt->bindParam("taskId", $taskId);
         $stmt->execute();
 
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -64,12 +62,12 @@ function getBook($bookId)
 
 // Get all (Read)
 
-function getAllBooks()
+function getAllTasks()
 {
     $conn = prepareDB();
 
     $query =<<<SQL
-    SELECT * FROM bok;
+    SELECT * FROM task;
     SQL;
 
     try {
@@ -86,22 +84,22 @@ function getAllBooks()
 
 
 // Update one
-function updateBook($bookId, $updateTitle, $updateAuthor, $updatePrice)
+function updateTask($taskId, $updatetaskTitle, $updatetaskDescription, $updateuserId)
 {
     $conn = prepareDB();
 
     $query =<<<SQL
-    UPDATE bok
-    SET bokTitel=:updateTitle, bokForfattare=:updateAuthor, bokPris=:updatePrice
-    WHERE bokId=:bookId;
+    UPDATE task
+    SET taskTitle=:updatetaskTitle, taskDescription=:updatetaskDescription, userId=:updateuserId
+    WHERE taskId=:taskId;
     SQL;
 
     try {
         $stmt = $conn->prepare($query);
-        $stmt->bindParam("bookId", $bookId);
-        $stmt->bindParam("updateTitle", $updateTitle);
-        $stmt->bindParam("updateAuthor", $updateAuthor);
-        $stmt->bindParam("updatePrice", $updatePrice);
+        $stmt->bindParam("taskId", $taskId);
+        $stmt->bindParam("updatetaskTitle", $updatetaskTitle);
+        $stmt->bindParam("updatetaskDescription", $updatetaskDescription);
+        $stmt->bindParam("updateuserId", $updateuserId);
         $stmt->execute();
     }
     catch (PDOException $error) {
@@ -111,17 +109,17 @@ function updateBook($bookId, $updateTitle, $updateAuthor, $updatePrice)
 }
 
 // Delete one
-function deleteBook($bookId)
+function deleteTask($taskId)
 {
     $conn = prepareDB();
 
     $query =<<<SQL
-    DELETE FROM bok WHERE bokId=:bookId;
+    DELETE FROM task WHERE taskId=:taskId;
     SQL;
 
     try {
         $stmt = $conn->prepare($query);
-        $stmt->bindParam("bookId", $bookId);
+        $stmt->bindParam("taskId", $taskId);
         $stmt->execute();
     }
     catch (PDOException $error) {
@@ -131,15 +129,15 @@ function deleteBook($bookId)
 
 // Get book-category relation
 
-function getBookCategoryRelation()
+function getTaskRelation()
 {
     $conn = prepareDB();
 
     $query =<<<SQL
-    SELECT bok.bokTitel, kategori.kategoriNamn
-    FROM kategori
-    INNER JOIN bok
-    ON kategori.kategoriId = bok.bokKategoriId;
+    SELECT task.taskTitle, task.taskDescription, task.taskDone, task.taskDate, task.userId
+    FROM user
+    INNER JOIN task
+    ON user.userId = task.userId;
     SQL;
 
     try {
@@ -153,25 +151,4 @@ function getBookCategoryRelation()
         echo "Error: " . $error->getMessage();
     }
 }
-
-function getAverageBookPrice()
-{
-    $conn = prepareDB();
-
-    $query =<<<SQL
-    SELECT AVG(bokPris) AS bokMedelPris FROM bok;
-    SQL;
-
-    try {
-        $stmt = $conn->prepare($query);
-        $stmt->execute();
-
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        return $stmt->fetchAll()[0];
-    }
-    catch (PDOException $error) {
-        echo "Error: " . $error->getMessage();
-    }
-}
-
 ?>
