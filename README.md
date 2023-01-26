@@ -1,4 +1,4 @@
-Individuell uppgift: Todo app
+A Individuell uppgift: Todo app
 En individuell uppgift där du ska skapa ett webbprojekt som är en att-göra-lista där listan sparas och läses in från en databas.
 
 I detta moment kommer ni enskilt att få skapa en digital att-göra-lista i en dynamisk webbplats, efter egen design, med PHP, HTML och CSS för att vidareutveckla era kunskaper i webbutveckling. Den här uppgiften går ut på att i bygga en webbplats som nyttjar en databas i PHP.
