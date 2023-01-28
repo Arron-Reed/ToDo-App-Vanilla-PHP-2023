@@ -1,4 +1,4 @@
-<form action="index.php" method="POST">
+<form action="kontrol.php" method="POST">
     Username: <br>
     <input type="text" name="username"><br>
 

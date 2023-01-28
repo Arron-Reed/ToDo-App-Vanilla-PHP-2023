@@ -8,7 +8,7 @@
     <title>To Do List</title>
 </head>
 <body>
-
+<section class="iPhone">
 <?php
     include 'crud.php';
 ?>
@@ -91,10 +91,12 @@ echo "Password: ".$password."<br>";
     foreach(getAllTasks() as $task)
     {
         print("<li>");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "'>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='chicken'>");
         print($task['taskTitle']);
         print("</a>");
-        print("<a href='#' class='done-button'>Mark as done</a>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?taskDone=" . $task["taskId"] . "' class='done-button'>");
+        print("Mark as done");
+        print("</a>");
         print(" - ");
         print("<a href='" . $_SERVER["PHP_SELF"] . "?deletetaskId=" . $task["taskId"] . "' class='potato'>");
         print("[remove]");
@@ -128,6 +130,16 @@ echo "Password: ".$password."<br>";
     }
     ?>
 
+    <?php
+    if(isset($_GET["taskDone"]))
+    {
+        markAsDone($_GET["taskDone"]);
+
+        print("<h2>TaDa</h2>");
+    }
+    ?>
+    
+
 <?php
 
     //GET RELATIONS
@@ -146,6 +158,6 @@ echo "Password: ".$password."<br>";
 
     ?>
 
-
+</section>
 </body>
 </html>

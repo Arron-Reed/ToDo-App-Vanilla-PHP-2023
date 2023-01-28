@@ -108,6 +108,30 @@ function updateTask($taskId, $updatetaskTitle, $updatetaskDescription, $updateus
 
 }
 
+// Mark as Done
+
+function markAsDone($taskId)
+{
+    $conn = prepareDB();
+
+    $query =<<<SQL
+    UPDATE task
+    SET taskDone=1
+    WHERE taskId=:taskId;
+    SQL;
+ 
+
+    try {
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam("taskId", $taskId);
+        $stmt->execute();
+    }
+    catch (PDOException $error) {
+        echo "Error: " . $error->getMessage();
+    }
+
+}
+
 // Delete one
 function deleteTask($taskId)
 {

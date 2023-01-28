@@ -1,57 +1,125 @@
 body {
-    background-color: aqua;
+  background-color: #0bd5b8;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+body .iPhone {
+  background-image: url(/screensaver.png);
+  background-size: 100%;
+  border: 7px solid #343434;
+  border-radius: 24px;
+  width: 290px;
+  height: 90vh;
+  margin: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 1000;
+}
+body .iPhone .iPhoneScreen .addTask {
+  background-color: rgba(229, 115, 81, 0.85);
+  cursor: pointer;
+  position: fixed;
+  bottom: 53px;
+  height: 60px;
+  width: 290px;
+  border-radius: 5px 5px 19px 19px;
+  font-family: kalam;
+  font-size: 2em;
+  font-weight: 600;
+  text-decoration: none;
+  color: #342e2a;
+  text-align: right;
+}
+body .iPhone .iPhoneScreen .taskContainer {
+  margin-top: 160px;
+}
+body .iPhone .iPhoneScreen .taskContainer .welcome {
+  width: 100%;
+}
+body .iPhone .iPhoneScreen .taskContainer li {
+  background-color: #eee;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
+  text-decoration: none;
+  width: 250px;
+  list-style: none;
+  height: 70px;
+  margin-bottom: 10px;
+  margin-left: -20px;
+  font-family: kalam;
+  color: #342e2a;
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+body .iPhone .iPhoneScreen .taskContainer li .task-button {
+  text-decoration: none;
+  color: #342e2a;
+  font-weight: 400;
+  font-size: 1em;
+  margin-left: 10px;
+}
+body .iPhone .iPhoneScreen .taskContainer li .task-description {
+  color: #342e2a;
+  font-weight: 400;
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
+.iPhone::-webkit-scrollbar {
+  display: none;
+}
+
+.chicken {
+  text-decoration: line-through;
 }
 
 .box {
-    background-color: #eee;
-    width: 500px;
-    border-radius: 5px;
-    margin: 25px 5px;
-    padding: 10px;
-    box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.2);
+  background-color: #eee;
+  width: 500px;
+  border-radius: 5px;
+  margin: 25px 5px;
+  padding: 10px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .potato {
-    background-color: #eee;
-    width: 500px;
-    border-radius: 5px;
-    margin: 25px 5px;
-    padding: 10px;
-    box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.2);
+  background-color: #eee;
+  width: 500px;
+  border-radius: 5px;
+  margin: 25px 5px;
+  padding: 10px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .dogs {
-    background-color: #eee;
-    width: 500px;
-    border-radius: 5px;
-    margin: 25px 5px;
-    padding: 10px;
-    box-shadow: 3px 3px 3px 3px rgb(0, 0, 0, 0.2);
+  background-color: #eee;
+  width: 500px;
+  border-radius: 5px;
+  margin: 25px 5px;
+  padding: 10px;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
 
 .done-button {
-    background-color: #ddd;
-    margin-left: 10px;
-    display: inline-block;
-    font-size: 0.8em;
-    opacity: 0.4;
+  background-color: #ddd;
+  margin-left: 10px;
+  display: inline-block;
+  font-size: 0.8em;
+  opacity: 0.4;
 }
 
 .dogs li:hover .done-button {
-    opacity: 1;
-
+  opacity: 1;
 }
 
-
-
 .bull {
-    background-color: pink;
-    border: 1px solid black;
-    padding: 30px 40px;
+  background-color: pink;
+  border: 1px solid black;
+  padding: 30px 40px;
 }
 
 .taskBox {
-    border: 1px solid black;
-}
-
-
+  border: 1px solid black;
+}/*# sourceMappingURL=styles.css.map */
