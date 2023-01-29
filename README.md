@@ -1,3 +1,5 @@
+Install the database
+
 Starta genom att "reopen" denna mapp som en dev-container i VS Code.
 
 Klicka först på den gröna knappen längst ner till vänster

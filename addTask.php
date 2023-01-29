@@ -35,13 +35,13 @@
         if(isset($_POST["taskTitle"])){
             createTask($_POST["taskTitle"], $_POST["taskDescription"], $_POST["taskDone"], $_POST["userId"]);
 
-            echo '<script>window.location="http://localhost/home.php"</script>';
+            echo '<script>window.location="http://localhost/index.php"</script>';
 
         }
     
         ?>
   
-  <a href="home.php" class="return">Return to Main Page >>></a>
+  <a href="index.php" class="return">Return to Main Page >>></a>
     
 </div>
     </section>

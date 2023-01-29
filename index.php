@@ -5,163 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
+
     <title>To Do List</title>
 </head>
 <body>
+
 <section class="iPhone">
+
 <?php
     include 'crud.php';
 ?>
 
-<?php
-/*
-
-error_reporting(0);
-
-
-$saved_username = "oliver";
-$saved_password = "1234";
-
-$saved_username = "arron";
-$saved_password = "5678";
-
-$saved_username = "maria";
-$saved_password = "98746";
-
-$input_username = $_POST["username"];
-$input_password = $_POST["password"];
-
-
-if ($input_username == $saved_username && $input_password == $saved_password)
-{
-    echo "Hej Oliver";
-}
-
-else
-{
-    echo "Login Failed";
-}
-
-echo "Vi har mottagit:<br>";
-echo "Username: ".$username."<br>";
-echo "Password: ".$password."<br>";
-*/
-?>
-
-    <h1>Hello there!</h1>
-
-<div class="box">
-    <h2>Add a new task</h2>
-
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-        <label for="inputTitle">Task:</label><br>
-        <input type="text" name="taskTitle" id="inputTitle"><br>
-        <label for="inputDescription">Description:</label><br>
-        <input type="text" name="taskDescription" id="inputDescription"><br>
-        <label for="inputUser">User:</label><br>
-        <input type="text" name="userId" id="inputUser"><br>
-        <input type="submit" value="Add task">
-    </form>
+<div class="iPhoneScreen">
+<div class="iPhoneHeader">
+<a href="doneTasks.php" class="done-tasks">All Completed Tasks</a>
 </div>
-
-<a href="index2.php" class="bull"> Link to another page </a>
-
     <?php
 
-    if(isset($_POST["taskTitle"])){
-        createTask($_POST["taskTitle"], $_POST["taskDescription"], $_POST["userId"]);
-    }
-
-    if(isset($_POST["updatetaskTitle"])){
-        updateTask($_POST["updatetaskId"], $_POST["updatetaskTitle"], $_POST["updatetaskDescription"], $_POST["updateuserId"]);
-    }
-
-    ?>
-<div class="dogs">
-    <h2>Tasks</h2>
-
-    <?php
-
+// Calling if the Delete button is pushed to run 'deleteTask' function 
     if(isset($_GET["deletetaskId"]))
     {
         deleteTask($_GET["deletetaskId"]);
     }
 
-    echo("<ul>");
-    foreach(getAllTasks() as $task)
+
+// Calling if the TaskDone button is pushed to run 'TaskDone' function
+    if(isset($_GET["taskDone"]))
     {
-        print("<li>");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='chicken'>");
-        print($task['taskTitle']);
-        print("</a>");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?taskDone=" . $task["taskId"] . "' class='done-button'>");
-        print("Mark as done");
-        print("</a>");
-        print(" - ");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?deletetaskId=" . $task["taskId"] . "' class='potato'>");
-        print("[remove]");
-        print("</a>");
-        print("</li>");
+        markAsDone($_GET["taskDone"]);
     }
-    echo("</ul>");
 
-    ?>
-</div>
-    <?php
-    if(isset($_GET["showtaskId"]))
-    {
 
-        
+// Calling if the Edit button is pushed to run 'edit/update' function
+
+if(isset($_GET["showtaskId"]))
+{
+    
 $task = getTask($_GET["showtaskId"]);
 
 echo '<script>window.location="http://localhost/updateTask.php?showtaskId='.$task["taskId"].'"</script>';
 
-        print("<h2>Selected Task</h2>");
-    ?>
-       
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"] ?>">
-        <label for="updatetaskTitle">Task:</label><br>
-        <input type="text" name="updatetaskTitle" id="updatetaskTitle" value="<? print($task["taskTitle"]) ?> "><br>
-        <label for="updatetaskDescription">Description:</label><br>
-        <input type="text" name="updatetaskDescription" id="updatetaskDescription" value="<? print($task["taskDescription"]) ?> "><br>
-        <label for="updateuserId">User nr:</label><br>
-        <input type="text" name="updateuserId" id="updateuserId" value="<? print($task["userId"]) ?> "><br>
-        <input type="hidden" name="updatetaskId" value="<? print($_GET["showtaskId"]) ?>"><br>
-        <input type="submit" value="Update task">
-    </form>
+}
 
-    <?php
-    }
-    ?>
+    echo("<ul class='taskContainer'>");
 
-    <?php
-    if(isset($_GET["taskDone"]))
+foreach(getAllTasks() as $task)
     {
-        markAsDone($_GET["taskDone"]);
 
-        print("<h2>TaDa</h2>");
-    }
-    ?>
-    
-
-<?php
-
-    //GET RELATIONS
-
-    echo "<h2>Task-kategorirelation</h2>";
-    echo("<ul>");
-    foreach(getTaskRelation() as $task)
-    {
         print("<li>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='task'>");
         print($task['taskTitle']);
-        print(" - ");
-        print($task['userId']);
+        print("</a>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='description'>");
+        print($task['taskDescription']);
+        print("</a><div class=buttonBox>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?taskDone=" . $task["taskId"] . "' class='font'>");
+        print("<button type='button' class='done-button'>Done</button>");
+        print("</a>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='font'>");
+        print("<button type='button' class='edit-button'>Edit</button>");
+        print("</a>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?deletetaskId=" . $task["taskId"] . "' class='font'>");
+        print("<button type='button' class='remove-button'>Delete</button>");
+        print("</a>");
+
+        print("</a></div>");
+
         print("</li>");
     }
     echo("</ul>");
 
     ?>
 
+<a href="addTask.php" class="addTask">Add New Task</a>
+
+</div>
 </section>
 </body>
 </html>

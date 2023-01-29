@@ -14,6 +14,8 @@
 <?php
     include 'crud.php';
 
+    error_reporting(0);
+
     $task = getTask($_GET["showtaskId"]);
 ?>
 <div class="updateiPhoneScreen">
@@ -35,12 +37,12 @@
 
 <?php
     if(isset($_POST["updatetaskTitle"])){
-        updateTask($_POST["updatetaskId"], $_POST["updatetaskTitle"], $_POST["updatetaskDescription"], $_POST["updateuserId"]);
+        updateTask($_POST["updatetaskId"], $_POST["updatetaskTitle"], $_POST["updatetaskDescription"], $_POST["updatetaskDone"], $_POST["updateuserId"]);
     
-        echo '<script>window.location="http://localhost/home.php"</script>';
+       echo '<script>window.location="http://localhost/index.php"</script>';
     }
 ?>
-<a href="home.php" class="return">Return to Main Page >>></a>
+<a href="index.php" class="return">Return to Main Page >>></a>
 
 </div>
 </section>

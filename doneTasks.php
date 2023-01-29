@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href='https://fonts.googleapis.com/css?family=Kalam' rel='stylesheet'>
 
-    <title>To Do List</title>
+    <title>Done Tasks</title>
 </head>
 <body>
 
@@ -27,19 +27,27 @@
         deleteTask($_GET["deletetaskId"]);
     }
 
+// Calling if the Delete All button is pushed to run 'deleteAll' function 
+if(isset($_GET["deleteAll"]))
+{
+    deleteAll($_GET["deleteAll"]);
+
+    echo '<script>window.location="http://localhost/index.php"</script>';
+
+}    
 
 // Calling if the TaskDone button is pushed to run 'TaskDone' function
-    if(isset($_GET["taskDone"]))
+    if(isset($_GET["taskUndo"]))
     {
-        markAsDone($_GET["taskDone"]);
-    }
+        unMark($_GET["taskUndo"]);
 
+        echo '<script>window.location="http://localhost/index.php"</script>';
+    }
 
 // Calling if the Edit button is pushed to run 'edit/update' function
 
 if(isset($_GET["showtaskId"]))
 {
-
     
 $task = getTask($_GET["showtaskId"]);
 
@@ -47,9 +55,10 @@ echo '<script>window.location="http://localhost/updateTask.php?showtaskId='.$tas
 
 }
 
+
     echo("<ul class='taskContainer'>");
 
-foreach(getAllTasks() as $task)
+foreach(getAllDoneTasks() as $task)
     {
 
         print("<li>");
@@ -59,8 +68,8 @@ foreach(getAllTasks() as $task)
         print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='description'>");
         print($task['taskDescription']);
         print("</a><div class=buttonBox>");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?taskDone=" . $task["taskId"] . "' class='font'>");
-        print("<button type='button' class='done-button'>Done</button>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?taskUndo=" . $task["taskId"] . "' class='font'>");
+        print("<button type='button' class='done-button'>Undo</button>");
         print("</a>");
         print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='font'>");
         print("<button type='button' class='edit-button'>Edit</button>");
@@ -75,13 +84,14 @@ foreach(getAllTasks() as $task)
     }
     echo("</ul>");
 
-    ?>
 
-<a href="addTask.php" class="addTask">Add New Task</a>
+
+print("<a href='" . $_SERVER["PHP_SELF"] . "?deleteAll" . "' class='deleteTaskButton'>");
+        print("Delete All Tasks");
+        print("</a>");
+?>
 
 </div>
-
-
 </section>
 </body>
 </html>

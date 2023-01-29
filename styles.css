@@ -16,6 +16,20 @@ body .iPhone {
   overflow-x: hidden;
   z-index: 1000;
 }
+body .iPhone .iPhoneScreen .done-tasks {
+  position: fixed;
+  left: 515px;
+  top: 20px;
+  padding: 6px;
+  font-family: kalam;
+  font-weight: bold;
+  color: #342e2a;
+  font-size: 0.9em;
+  text-decoration: none;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+  background-color: rgb(229, 115, 81);
+}
 body .iPhone .iPhoneScreen .addTask {
   background-color: rgba(229, 115, 81, 0.75);
   cursor: pointer;
@@ -32,8 +46,24 @@ body .iPhone .iPhoneScreen .addTask {
   text-align: center;
   padding-top: 15px;
 }
+body .iPhone .iPhoneScreen .deleteTaskButton {
+  background-color: rgba(229, 115, 81, 0.75);
+  cursor: pointer;
+  position: fixed;
+  bottom: 57px;
+  height: 60px;
+  width: 290px;
+  border-radius: 5px 5px 19px 19px;
+  font-family: kalam;
+  font-size: 2em;
+  font-weight: 600;
+  text-decoration: none;
+  color: #342e2a;
+  text-align: center;
+  padding-top: 15px;
+}
 body .iPhone .iPhoneScreen .taskContainer {
-  margin-top: 160px;
+  margin-top: 150px;
   padding-bottom: 60px;
 }
 body .iPhone .iPhoneScreen .taskContainer li {
