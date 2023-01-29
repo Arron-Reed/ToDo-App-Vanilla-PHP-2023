@@ -17,10 +17,10 @@ body .iPhone {
   z-index: 1000;
 }
 body .iPhone .iPhoneScreen .addTask {
-  background-color: rgba(229, 115, 81, 0.85);
+  background-color: rgba(229, 115, 81, 0.75);
   cursor: pointer;
   position: fixed;
-  bottom: 53px;
+  bottom: 57px;
   height: 60px;
   width: 290px;
   border-radius: 5px 5px 19px 19px;
@@ -29,15 +29,16 @@ body .iPhone .iPhoneScreen .addTask {
   font-weight: 600;
   text-decoration: none;
   color: #342e2a;
-  text-align: right;
+  text-align: center;
+  padding-top: 15px;
 }
 body .iPhone .iPhoneScreen .taskContainer {
   margin-top: 160px;
-}
-body .iPhone .iPhoneScreen .taskContainer .welcome {
-  width: 100%;
+  padding-bottom: 60px;
 }
 body .iPhone .iPhoneScreen .taskContainer li {
+  display: flex;
+  flex-direction: column;
   background-color: #eee;
   border-radius: 10px;
   border: 1px solid #eee;
@@ -45,7 +46,7 @@ body .iPhone .iPhoneScreen .taskContainer li {
   text-decoration: none;
   width: 250px;
   list-style: none;
-  height: 70px;
+  height: 75px;
   margin-bottom: 10px;
   margin-left: -20px;
   font-family: kalam;
@@ -53,73 +54,138 @@ body .iPhone .iPhoneScreen .taskContainer li {
   padding-top: 8px;
   padding-bottom: 10px;
 }
-body .iPhone .iPhoneScreen .taskContainer li .task-button {
+body .iPhone .iPhoneScreen .taskContainer li .task {
   text-decoration: none;
   color: #342e2a;
   font-weight: 400;
   font-size: 1em;
   margin-left: 10px;
 }
-body .iPhone .iPhoneScreen .taskContainer li .task-description {
+body .iPhone .iPhoneScreen .taskContainer li .description {
+  text-decoration: none;
   color: #342e2a;
   font-weight: 400;
   font-size: 0.85em;
   margin-left: 10px;
+  margin-bottom: 5px;
+}
+body .iPhone .iPhoneScreen .taskContainer li .buttonBox {
+  display: flex;
+  justify-content: space-evenly;
+}
+body .iPhone .iPhoneScreen .taskContainer li .done-button {
+  font-family: kalam;
+  font-size: 0.9em;
+  width: 65px;
+  height: 23px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+  background-color: #caffbf;
+}
+body .iPhone .iPhoneScreen .taskContainer li .remove-button {
+  background-color: #ffc6ff;
+  font-family: kalam;
+  font-size: 0.9em;
+  width: 65px;
+  height: 23px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+}
+body .iPhone .iPhoneScreen .taskContainer li .edit-button {
+  background-color: #9bf6ff;
+  font-family: kalam;
+  font-size: 0.9em;
+  width: 65px;
+  height: 23px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+}
+body .iPhone .updateiPhoneScreen {
+  margin-top: 160px;
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm {
+  background-color: #eee;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
+  width: 250px;
+  height: 305px;
+  margin: auto;
+  font-family: kalam;
+  font-size: 2em;
+  color: #342e2a;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  color: #342e2a;
+  font-weight: bolder;
+  font-size: 1em;
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm label {
+  margin-left: 10px;
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm input {
+  width: 200px;
+  margin-left: 10px;
+  box-shadow: 1px 1px 1px 1px rgba(49, 49, 49, 0.3);
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm .gap {
+  margin-bottom: 7px;
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm .update {
+  background-color: #9bf6ff;
+  border: 1px solid #9bf6ff;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 5px rgba(49, 49, 49, 0.2);
+  width: 210px;
+  height: 50px;
+  margin-left: 10px;
+  font-family: kalam;
+  font-size: 2em;
+  font-weight: bold;
+  color: #342e2a;
+  transition: 0.3s;
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm .update:hover {
+  transform: scale(1.05);
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm .add {
+  background-color: #9bf6ff;
+  border: 1px solid #9bf6ff;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 5px rgba(49, 49, 49, 0.2);
+  width: 210px;
+  height: 50px;
+  margin-top: 20px;
+  margin-left: 10px;
+  font-family: kalam;
+  font-size: 2em;
+  font-weight: bold;
+  color: #342e2a;
+  transition: 0.3s;
+}
+body .iPhone .updateiPhoneScreen .updateTaskForm .add:hover {
+  transform: scale(1.05);
+}
+body .iPhone .return {
+  background-color: rgba(229, 115, 81, 0.75);
+  cursor: pointer;
+  position: fixed;
+  bottom: 57px;
+  height: 60px;
+  width: 290px;
+  border-radius: 5px 5px 19px 19px;
+  font-family: kalam;
+  font-size: 1.5em;
+  font-weight: 600;
+  text-decoration: none;
+  color: #342e2a;
+  text-align: center;
+  padding-top: 15px;
 }
 
 .iPhone::-webkit-scrollbar {
   display: none;
-}
-
-.chicken {
-  text-decoration: line-through;
-}
-
-.box {
-  background-color: #eee;
-  width: 500px;
-  border-radius: 5px;
-  margin: 25px 5px;
-  padding: 10px;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.potato {
-  background-color: #eee;
-  width: 500px;
-  border-radius: 5px;
-  margin: 25px 5px;
-  padding: 10px;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.dogs {
-  background-color: #eee;
-  width: 500px;
-  border-radius: 5px;
-  margin: 25px 5px;
-  padding: 10px;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.2);
-}
-
-.done-button {
-  background-color: #ddd;
-  margin-left: 10px;
-  display: inline-block;
-  font-size: 0.8em;
-  opacity: 0.4;
-}
-
-.dogs li:hover .done-button {
-  opacity: 1;
-}
-
-.bull {
-  background-color: pink;
-  border: 1px solid black;
-  padding: 30px 40px;
-}
-
-.taskBox {
-  border: 1px solid black;
 }/*# sourceMappingURL=styles.css.map */

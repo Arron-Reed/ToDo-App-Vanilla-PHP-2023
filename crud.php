@@ -10,6 +10,35 @@ function sanitera($input)
     return htmlspecialchars(strip_tags($input)); 
 }
 
+
+// Add User (Login) 
+
+function createUser($userName, $userPassword)
+{ 
+    $conn = prepareDB();
+
+    $userName = sanitera($userName);
+    $userPassword = sanitera($userPassword);
+
+    $query =<<<SQL
+    INSERT INTO user (`userName`, `userPassword`) 
+    VALUES (:userName,	:userPassword)
+    SQL;
+
+    try {
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam("userName", $userName);
+        $stmt->bindParam("userPassword", $userPassword);
+        $stmt->execute();
+    }
+    catch (PDOException $error) {
+        echo "Error: " . $error->getMessage();
+    }
+}
+
+
+
+
 // Create 
 
 function createTask($taskTitle, $taskDescription, $userId)
@@ -41,7 +70,9 @@ function createTask($taskTitle, $taskDescription, $userId)
 
 function getTask($taskId)
 {
+    
     $conn = prepareDB();
+
 
     $query =<<<SQL
     SELECT * FROM task WHERE taskId=:taskId;
@@ -67,7 +98,7 @@ function getAllTasks()
     $conn = prepareDB();
 
     $query =<<<SQL
-    SELECT * FROM task;
+    SELECT * FROM task WHERE taskDone=0;
     SQL;
 
     try {
@@ -120,7 +151,6 @@ function markAsDone($taskId)
     WHERE taskId=:taskId;
     SQL;
  
-
     try {
         $stmt = $conn->prepare($query);
         $stmt->bindParam("taskId", $taskId);
@@ -129,7 +159,6 @@ function markAsDone($taskId)
     catch (PDOException $error) {
         echo "Error: " . $error->getMessage();
     }
-
 }
 
 // Delete one

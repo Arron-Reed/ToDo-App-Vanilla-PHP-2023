@@ -110,7 +110,11 @@ echo "Password: ".$password."<br>";
     <?php
     if(isset($_GET["showtaskId"]))
     {
-        $task = getTask($_GET["showtaskId"]);
+
+        
+$task = getTask($_GET["showtaskId"]);
+
+echo '<script>window.location="http://localhost/updateTask.php?showtaskId='.$task["taskId"].'"</script>';
 
         print("<h2>Selected Task</h2>");
     ?>

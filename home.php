@@ -21,31 +21,56 @@
 
     <?php
 
+// Calling if the Delete button is pushed to run 'deleteTask' function 
     if(isset($_GET["deletetaskId"]))
     {
         deleteTask($_GET["deletetaskId"]);
     }
 
-    echo("<ul class='taskContainer'>");
 
+// Calling if the TaskDone button is pushed to run 'TaskDone' function
+    if(isset($_GET["taskDone"]))
+    {
+        markAsDone($_GET["taskDone"]);
+    }
+
+
+// Calling if the Edit button is pushed to run 'edit/update' function
+
+if(isset($_GET["showtaskId"]))
+{
+
+    
+$task = getTask($_GET["showtaskId"]);
+
+echo '<script>window.location="http://localhost/updateTask.php?showtaskId='.$task["taskId"].'"</script>';
+
+}
+
+    echo("<ul class='taskContainer'>");
 
 foreach(getAllTasks() as $task)
     {
 
         print("<li>");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='task-button'>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='task'>");
         print($task['taskTitle']);
-        print("</a></br>");
-        print("<p='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='task-description'>");
+        print("</a>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='description'>");
         print($task['taskDescription']);
-        print("</p>");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?taskDone=" . $task["taskId"] . "' class='done-button'>");
-        print("Mark as done");
+        print("</a><div class=buttonBox>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?taskDone=" . $task["taskId"] . "' class='font'>");
+        print("<button type='button' class='done-button'>Done</button>");
         print("</a>");
-        print(" - ");
-        print("<a href='" . $_SERVER["PHP_SELF"] . "?deletetaskId=" . $task["taskId"] . "' class='remove-button'>");
-        print("[remove]");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?showtaskId=" . $task["taskId"] . "' class='font'>");
+        print("<button type='button' class='edit-button'>Edit</button>");
         print("</a>");
+        print("<a href='" . $_SERVER["PHP_SELF"] . "?deletetaskId=" . $task["taskId"] . "' class='font'>");
+        print("<button type='button' class='remove-button'>Delete</button>");
+        print("</a>");
+
+        print("</a></div>");
+
         print("</li>");
     }
     echo("</ul>");
@@ -57,14 +82,6 @@ foreach(getAllTasks() as $task)
 </div>
 
 
-    <?php
-    if(isset($_GET["taskDone"]))
-    {
-        markAsDone($_GET["taskDone"]);
-
-        print("<h2>TaDa</h2>");
-    }
-    ?>
 </section>
 </body>
 </html>
