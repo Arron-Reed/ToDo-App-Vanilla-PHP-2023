@@ -1,4 +1,4 @@
-Install the database
+Install the database MariaDB.sql
 
 Starta genom att "reopen" denna mapp som en dev-container i VS Code.
 
@@ -12,3 +12,6 @@ Välj sedan Reopen in Container
 
 PHP programmet kommer att köra i `localhost:80`
 Databasen i `localhost:3306` och Adminer i `localhost:8080`
+
+OBS - IMPORTANT - This app was not made to be responsive or work across different web browsers.
+Only run this in Chrome with the screen resolution set at 1296 x 652
