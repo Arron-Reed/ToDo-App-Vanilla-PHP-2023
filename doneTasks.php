@@ -19,6 +19,10 @@
 
 <div class="iPhoneScreen">
 
+<div class="iPhoneHeader">
+                    <a href="index.php" class="done-tasks">Return to Main Page</a>
+                </div>  
+
     <?php
 
 // Calling if the Delete button is pushed to run 'deleteTask' function 
@@ -56,7 +60,7 @@ echo '<script>window.location="http://localhost/updateTask.php?showtaskId='.$tas
 }
 
 
-    echo("<ul class='taskContainer'>");
+    echo("<ul class='deleteTaskContainer'>");
 
 foreach(getAllDoneTasks() as $task)
     {

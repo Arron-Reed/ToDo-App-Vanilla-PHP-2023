@@ -11,8 +11,8 @@
 <body>
 <section class="iPhone">
 
-<?php
-    include 'crud.php';
+    <?php
+        include 'crud.php';
     ?>
     
     <div class="updateiPhoneScreen">
@@ -40,10 +40,10 @@
         }
     
         ?>
-  
-  <a href="index.php" class="return">Return to Main Page >>></a>
-    
-</div>
+    <div class="return">
+        <a href="index.php">Return to Main Page >>></a>
+    </div>   
+
     </section>
     </body>
     </html>

@@ -1,25 +1,45 @@
 body {
   background-color: #0bd5b8;
-  height: 100vh;
-  margin: 0;
+  height: 100%;
+  margin-top: 100px;
   padding: 0;
 }
+body .addTask {
+  background-color: rgba(229, 115, 81, 0.75);
+  cursor: pointer;
+  position: fixed;
+  top: 633px;
+  height: 60px;
+  width: 290px;
+  border-radius: 5px 5px 19px 19px;
+  font-family: kalam;
+  font-size: 2em;
+  font-weight: 600;
+  text-decoration: none;
+  color: #342e2a;
+  text-align: center;
+  padding-top: 15px;
+}
 body .iPhone {
+  display: flex;
+  flex-direction: column;
   background-image: url(/screensaver.png);
   background-size: 100%;
   border: 7px solid #343434;
   border-radius: 24px;
   width: 290px;
-  height: 90vh;
+  height: 600px;
+  margin-top: 300px;
   margin: auto;
   overflow-y: scroll;
   overflow-x: hidden;
   z-index: 1000;
 }
-body .iPhone .iPhoneScreen .done-tasks {
-  position: fixed;
-  left: 515px;
-  top: 20px;
+body .iPhone .done-tasks {
+  display: flex;
+  width: 130px;
+  margin-top: 140px;
+  margin-left: 7px;
   padding: 6px;
   font-family: kalam;
   font-weight: bold;
@@ -30,11 +50,26 @@ body .iPhone .iPhoneScreen .done-tasks {
   box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
   background-color: rgb(229, 115, 81);
 }
-body .iPhone .iPhoneScreen .addTask {
+body .iPhone .doneReturn {
+  display: flex;
+  width: 130px;
+  margin-top: 140px;
+  margin-left: 7px;
+  padding: 6px;
+  font-family: kalam;
+  font-weight: bold;
+  color: #342e2a;
+  font-size: 0.9em;
+  text-decoration: none;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+  background-color: rgb(229, 115, 81);
+}
+body .iPhone .deleteTaskButton {
   background-color: rgba(229, 115, 81, 0.75);
   cursor: pointer;
   position: fixed;
-  bottom: 57px;
+  top: 633px;
   height: 60px;
   width: 290px;
   border-radius: 5px 5px 19px 19px;
@@ -46,27 +81,11 @@ body .iPhone .iPhoneScreen .addTask {
   text-align: center;
   padding-top: 15px;
 }
-body .iPhone .iPhoneScreen .deleteTaskButton {
-  background-color: rgba(229, 115, 81, 0.75);
-  cursor: pointer;
-  position: fixed;
-  bottom: 57px;
-  height: 60px;
-  width: 290px;
-  border-radius: 5px 5px 19px 19px;
-  font-family: kalam;
-  font-size: 2em;
-  font-weight: 600;
-  text-decoration: none;
-  color: #342e2a;
-  text-align: center;
-  padding-top: 15px;
-}
-body .iPhone .iPhoneScreen .taskContainer {
-  margin-top: 150px;
+body .iPhone .taskContainer {
+  margin-top: 20px;
   padding-bottom: 60px;
 }
-body .iPhone .iPhoneScreen .taskContainer li {
+body .iPhone .taskContainer li {
   display: flex;
   flex-direction: column;
   background-color: #eee;
@@ -76,7 +95,7 @@ body .iPhone .iPhoneScreen .taskContainer li {
   text-decoration: none;
   width: 250px;
   list-style: none;
-  height: 75px;
+  height: auto;
   margin-bottom: 10px;
   margin-left: -20px;
   font-family: kalam;
@@ -84,14 +103,14 @@ body .iPhone .iPhoneScreen .taskContainer li {
   padding-top: 8px;
   padding-bottom: 10px;
 }
-body .iPhone .iPhoneScreen .taskContainer li .task {
+body .iPhone .taskContainer li .task {
   text-decoration: none;
   color: #342e2a;
   font-weight: 400;
   font-size: 1em;
   margin-left: 10px;
 }
-body .iPhone .iPhoneScreen .taskContainer li .description {
+body .iPhone .taskContainer li .description {
   text-decoration: none;
   color: #342e2a;
   font-weight: 400;
@@ -99,11 +118,11 @@ body .iPhone .iPhoneScreen .taskContainer li .description {
   margin-left: 10px;
   margin-bottom: 5px;
 }
-body .iPhone .iPhoneScreen .taskContainer li .buttonBox {
+body .iPhone .taskContainer li .buttonBox {
   display: flex;
   justify-content: space-evenly;
 }
-body .iPhone .iPhoneScreen .taskContainer li .done-button {
+body .iPhone .taskContainer li .done-button {
   font-family: kalam;
   font-size: 0.9em;
   width: 65px;
@@ -113,7 +132,7 @@ body .iPhone .iPhoneScreen .taskContainer li .done-button {
   box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
   background-color: #caffbf;
 }
-body .iPhone .iPhoneScreen .taskContainer li .remove-button {
+body .iPhone .taskContainer li .remove-button {
   background-color: #ffc6ff;
   font-family: kalam;
   font-size: 0.9em;
@@ -123,7 +142,78 @@ body .iPhone .iPhoneScreen .taskContainer li .remove-button {
   border-radius: 7px;
   box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
 }
-body .iPhone .iPhoneScreen .taskContainer li .edit-button {
+body .iPhone .taskContainer li .edit-button {
+  background-color: #9bf6ff;
+  font-family: kalam;
+  font-size: 0.9em;
+  width: 65px;
+  height: 23px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+}
+body .iPhone .deleteTaskContainer {
+  margin-top: 20px;
+  padding-bottom: 60px;
+}
+body .iPhone .deleteTaskContainer li {
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
+  text-decoration: none;
+  width: 250px;
+  list-style: none;
+  height: auto;
+  margin-bottom: 10px;
+  margin-left: -20px;
+  font-family: kalam;
+  color: #342e2a;
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+body .iPhone .deleteTaskContainer li .task {
+  text-decoration: none;
+  color: #342e2a;
+  font-weight: 400;
+  font-size: 1em;
+  margin-left: 10px;
+}
+body .iPhone .deleteTaskContainer li .description {
+  text-decoration: none;
+  color: #342e2a;
+  font-weight: 400;
+  font-size: 0.85em;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+body .iPhone .deleteTaskContainer li .buttonBox {
+  display: flex;
+  justify-content: space-evenly;
+}
+body .iPhone .deleteTaskContainer li .done-button {
+  font-family: kalam;
+  font-size: 0.9em;
+  width: 65px;
+  height: 23px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+  background-color: #caffbf;
+}
+body .iPhone .deleteTaskContainer li .remove-button {
+  background-color: #ffc6ff;
+  font-family: kalam;
+  font-size: 0.9em;
+  width: 65px;
+  height: 23px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px 2px rgba(66, 65, 65, 0.3);
+}
+body .iPhone .deleteTaskContainer li .edit-button {
   background-color: #9bf6ff;
   font-family: kalam;
   font-size: 0.9em;
@@ -203,7 +293,7 @@ body .iPhone .return {
   background-color: rgba(229, 115, 81, 0.75);
   cursor: pointer;
   position: fixed;
-  bottom: 57px;
+  top: 633px;
   height: 60px;
   width: 290px;
   border-radius: 5px 5px 19px 19px;
@@ -218,4 +308,47 @@ body .iPhone .return {
 
 .iPhone::-webkit-scrollbar {
   display: none;
+}
+
+@media (max-height: 800px) {
+  body {
+    margin-top: 50px;
+  }
+  body .addTask {
+    top: 583px;
+  }
+  body .iPhone .return {
+    top: 583px;
+  }
+  body .iPhone .deleteTaskButton {
+    top: 583px;
+  }
+}
+@media (max-height: 720px) {
+  body {
+    margin-top: 20px;
+  }
+  body .addTask {
+    top: 553px;
+  }
+  body .iPhone .return {
+    top: 553px;
+  }
+  body .iPhone .deleteTaskButton {
+    top: 553px;
+  }
+}
+@media (max-height: 650px) {
+  body {
+    margin-top: 5px;
+  }
+  body .addTask {
+    top: 538px;
+  }
+  body .iPhone .return {
+    top: 538px;
+  }
+  body .iPhone .deleteTaskButton {
+    top: 538px;
+  }
 }/*# sourceMappingURL=styles.css.map */

@@ -2,262 +2,404 @@ $background-color1: #0bd5b8;
 $background-color2: #fae06f;
 $color: #342e2a;
 
-
-
 body {
-    background-color: $background-color1;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+  background-color: $background-color1;
+  height: 100%;
+  margin-top: 100px;
+  padding: 0;
 
-    .iPhone {
-        background-image: url(/screensaver.png);
-        background-size: 100%;
-        border: 7px solid #343434;
-        border-radius: 24px;
-        width: 290px;
-        height: 90vh;
-        margin: auto;
-        overflow-y: scroll;
-        overflow-x: hidden;
-        z-index: 1000;
+  .addTask {
+    background-color: rgb(229, 115, 81, 0.75);
+    cursor: pointer;
+    position: fixed;
+    top: 633px;
+    height: 60px;
+    width: 290px;
+    border-radius: 5px 5px 19px 19px;
+    font-family: kalam;
+    font-size: 2em;
+    font-weight: 600;
+    text-decoration: none;
+    color: $color;
+    text-align: center;
+    padding-top: 15px;
+  }
 
-        .iPhoneScreen {
+  .iPhone {
+    display: flex;
+    flex-direction: column;
+    background-image: url(/screensaver.png);
+    background-size: 100%;
+    border: 7px solid #343434;
+    border-radius: 24px;
+    width: 290px;
+    height: 600px;
+    margin-top: 300px;
+    margin: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1000;
 
-           
-
-            .done-tasks {
-                position: fixed;
-                left: 515px;
-                top: 20px;
-                padding: 6px;
-                font-family: kalam;
-                font-weight: bold;
-                color: $color;
-                font-size: 0.9em;
-                text-decoration: none;         
-                border-radius: 7px;
-                box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
-                background-color: rgb(229, 115, 81, 1);
-            }
-
-            .addTask {
-                background-color: rgb(229, 115, 81, 0.75);
-                cursor: pointer; 
-                position: fixed;
-                bottom: 57px;  
-                height: 60px;
-                width: 290px;
-                border-radius: 5px 5px 19px 19px;
-                font-family: kalam;
-                font-size: 2em;
-                font-weight: 600;
-                text-decoration: none;
-                color: $color;
-                text-align: center;
-                padding-top: 15px;
-            } 
-
-            .deleteTaskButton{
-                background-color: rgb(229, 115, 81, 0.75);
-                cursor: pointer; 
-                position: fixed;
-                bottom: 57px;  
-                height: 60px;
-                width: 290px;
-                border-radius: 5px 5px 19px 19px;
-                font-family: kalam;
-                font-size: 2em;
-                font-weight: 600;
-                text-decoration: none;
-                color: $color;
-                text-align: center;
-                padding-top: 15px;
-            }
-        
-            .taskContainer {
-                margin-top: 150px;
-                padding-bottom: 60px;
-               
-                
-                li {
-                    display: flex;
-                    flex-direction: column;
-                    background-color: #eee;
-                    border-radius: 10px;
-                    border: 1px solid #eee;
-                    box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
-                    text-decoration: none;
-                    width: 250px;
-                    list-style: none;
-                    height: 75px;
-                    margin-bottom: 10px;
-                    margin-left: -20px;
-                    font-family: kalam;
-                    color: $color;
-                    padding-top: 8px;
-                    padding-bottom: 10px;
-                    
-                    .task {
-                        text-decoration: none;
-                        color: $color;
-                        font-weight: 400;
-                        font-size: 1em;
-                        margin-left: 10px;
-                    }
-
-                    .description {
-                        text-decoration: none;
-                        color: $color;
-                        font-weight: 400;
-                        font-size: 0.85em;
-                        margin-left: 10px;
-                        margin-bottom: 5px;
-                    }
-
-                    .buttonBox {
-                        display: flex;
-                        justify-content: space-evenly;
-                        
-                    }
-                        
-                    .done-button {
-                        font-family: kalam;
-                        font-size: 0.9em;
-                        width: 65px;
-                        height: 23px;
-                        border: 1px solid #ddd;
-                        border-radius: 7px;
-                        box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
-                        background-color: #caffbf;                               
-                    }
-    
-                    .remove-button {
-                        background-color: #ffc6ff; 
-                        font-family: kalam;
-                        font-size: 0.9em;
-                        width: 65px;
-                        height: 23px;
-                        border: 1px solid #ddd;
-                        border-radius: 7px;
-                        box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);                              
-                    }
-    
-                    .edit-button {
-                        background-color: #9bf6ff; 
-                        font-family: kalam;
-                        font-size: 0.9em;
-                        width: 65px;
-                        height: 23px;
-                        border: 1px solid #ddd;
-                        border-radius: 7px;
-                        box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);                              
-                    }
-
-                    
-                    
-                } 
-            } 
-        }
-        
-        .updateiPhoneScreen {
-
-            margin-top: 160px;
-
-            .updateTaskForm {
-                background-color: #eee;
-                border-radius: 10px;
-                border: 1px solid #eee;
-                box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
-                width: 250px;
-                height: 305px;
-                margin: auto;
-                font-family: kalam;
-                font-size: 2em;
-                color: $color;
-                padding-top: 8px;
-                padding-bottom: 10px;
-                color: $color;
-                font-weight: bolder;
-                font-size: 1em;
-
-                label {
-                    margin-left: 10px; 
-                    
-                }
-
-                input {
-                    width: 200px;
-                    margin-left: 10px;
-                    box-shadow: 1px 1px 1px 1px rgba(49, 49, 49, 0.3);     
-                }
-
-                .gap {
-                    margin-bottom: 7px;
-                }
-
-                .update {
-                    background-color: #9bf6ff;
-                    border: 1px solid #9bf6ff;
-                    border-radius: 10px;
-                    box-shadow: 3px 3px 5px 5px rgba(49, 49, 49, 0.2);
-                    width: 210px;
-                    height: 50px;
-                    margin-left: 10px;
-                    font-family: kalam;
-                    font-size: 2em;
-                    font-weight: bold;
-                    color: $color;
-                    transition: 0.3s;
-                }
-
-                .update:hover {
-                    transform: scale(1.05);
-                }
-
-                .add {
-                    background-color: #9bf6ff;
-                    border: 1px solid #9bf6ff;
-                    border-radius: 10px;
-                    box-shadow: 3px 3px 5px 5px rgba(49, 49, 49, 0.2);
-                    width: 210px;
-                    height: 50px;
-                    margin-top: 20px;
-                    margin-left: 10px;
-                    font-family: kalam;
-                    font-size: 2em;
-                    font-weight: bold;
-                    color: $color;
-                    transition: 0.3s;
-                }
-
-                .add:hover {
-                    transform: scale(1.05);
-                }
-            } 
-        } 
-        .return {
-            background-color: rgb(229, 115, 81, 0.75);
-            cursor: pointer; 
-            position: fixed;
-            bottom: 57px;  
-            height: 60px;
-            width: 290px;
-            border-radius: 5px 5px 19px 19px;
-            font-family: kalam;
-            font-size: 1.5em;
-            font-weight: 600;
-            text-decoration: none;
-            color: $color;
-            text-align: center;
-            padding-top: 15px;
-        } 
+    .done-tasks {
+      display: flex;
+      width: 130px;
+      margin-top: 140px;
+      margin-left: 7px;
+      padding: 6px;
+      font-family: kalam;
+      font-weight: bold;
+      color: $color;
+      font-size: 0.9em;
+      text-decoration: none;
+      border-radius: 7px;
+      box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+      background-color: rgb(229, 115, 81, 1);
     }
+
+    .doneReturn {
+      display: flex;
+      width: 130px;
+      margin-top: 140px;
+      margin-left: 7px;
+      padding: 6px;
+      font-family: kalam;
+      font-weight: bold;
+      color: $color;
+      font-size: 0.9em;
+      text-decoration: none;
+      border-radius: 7px;
+      box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+      background-color: rgb(229, 115, 81, 1);
+    }
+
+    .deleteTaskButton {
+      background-color: rgb(229, 115, 81, 0.75);
+      cursor: pointer;
+      position: fixed;
+      top: 633px;
+      height: 60px;
+      width: 290px;
+      border-radius: 5px 5px 19px 19px;
+      font-family: kalam;
+      font-size: 2em;
+      font-weight: 600;
+      text-decoration: none;
+      color: $color;
+      text-align: center;
+      padding-top: 15px;
+    }
+
+    .taskContainer {
+      margin-top: 20px;
+      padding-bottom: 60px;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        background-color: #eee;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
+        text-decoration: none;
+        width: 250px;
+        list-style: none;
+        height: auto;
+        margin-bottom: 10px;
+        margin-left: -20px;
+        font-family: kalam;
+        color: $color;
+        padding-top: 8px;
+        padding-bottom: 10px;
+
+        .task {
+          text-decoration: none;
+          color: $color;
+          font-weight: 400;
+          font-size: 1em;
+          margin-left: 10px;
+        }
+
+        .description {
+          text-decoration: none;
+          color: $color;
+          font-weight: 400;
+          font-size: 0.85em;
+          margin-left: 10px;
+          margin-bottom: 5px;
+        }
+
+        .buttonBox {
+          display: flex;
+          justify-content: space-evenly;
+        }
+
+        .done-button {
+          font-family: kalam;
+          font-size: 0.9em;
+          width: 65px;
+          height: 23px;
+          border: 1px solid #ddd;
+          border-radius: 7px;
+          box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+          background-color: #caffbf;
+        }
+
+        .remove-button {
+          background-color: #ffc6ff;
+          font-family: kalam;
+          font-size: 0.9em;
+          width: 65px;
+          height: 23px;
+          border: 1px solid #ddd;
+          border-radius: 7px;
+          box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+        }
+
+        .edit-button {
+          background-color: #9bf6ff;
+          font-family: kalam;
+          font-size: 0.9em;
+          width: 65px;
+          height: 23px;
+          border: 1px solid #ddd;
+          border-radius: 7px;
+          box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+        }
+      }
+    }
+
+    .deleteTaskContainer {
+      margin-top: 20px;
+      padding-bottom: 60px;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        background-color: #eee;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
+        text-decoration: none;
+        width: 250px;
+        list-style: none;
+        height: auto;
+        margin-bottom: 10px;
+        margin-left: -20px;
+        font-family: kalam;
+        color: $color;
+        padding-top: 8px;
+        padding-bottom: 10px;
+
+        .task {
+          text-decoration: none;
+          color: $color;
+          font-weight: 400;
+          font-size: 1em;
+          margin-left: 10px;
+        }
+
+        .description {
+          text-decoration: none;
+          color: $color;
+          font-weight: 400;
+          font-size: 0.85em;
+          margin-left: 10px;
+          margin-bottom: 5px;
+        }
+
+        .buttonBox {
+          display: flex;
+          justify-content: space-evenly;
+        }
+
+        .done-button {
+          font-family: kalam;
+          font-size: 0.9em;
+          width: 65px;
+          height: 23px;
+          border: 1px solid #ddd;
+          border-radius: 7px;
+          box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+          background-color: #caffbf;
+        }
+
+        .remove-button {
+          background-color: #ffc6ff;
+          font-family: kalam;
+          font-size: 0.9em;
+          width: 65px;
+          height: 23px;
+          border: 1px solid #ddd;
+          border-radius: 7px;
+          box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+        }
+
+        .edit-button {
+          background-color: #9bf6ff;
+          font-family: kalam;
+          font-size: 0.9em;
+          width: 65px;
+          height: 23px;
+          border: 1px solid #ddd;
+          border-radius: 7px;
+          box-shadow: 2px 2px 4px 2px rgb(66, 65, 65, 0.3);
+        }
+      }
+    }
+
+    .updateiPhoneScreen {
+      margin-top: 160px;
+
+      .updateTaskForm {
+        background-color: #eee;
+        border-radius: 10px;
+        border: 1px solid #eee;
+        box-shadow: 3px 3px 10px 7px rgba(49, 49, 49, 0.2);
+        width: 250px;
+        height: 305px;
+        margin: auto;
+        font-family: kalam;
+        font-size: 2em;
+        color: $color;
+        padding-top: 8px;
+        padding-bottom: 10px;
+        color: $color;
+        font-weight: bolder;
+        font-size: 1em;
+
+        label {
+          margin-left: 10px;
+        }
+
+        input {
+          width: 200px;
+          margin-left: 10px;
+          box-shadow: 1px 1px 1px 1px rgba(49, 49, 49, 0.3);
+        }
+
+        .gap {
+          margin-bottom: 7px;
+        }
+
+        .update {
+          background-color: #9bf6ff;
+          border: 1px solid #9bf6ff;
+          border-radius: 10px;
+          box-shadow: 3px 3px 5px 5px rgba(49, 49, 49, 0.2);
+          width: 210px;
+          height: 50px;
+          margin-left: 10px;
+          font-family: kalam;
+          font-size: 2em;
+          font-weight: bold;
+          color: $color;
+          transition: 0.3s;
+        }
+
+        .update:hover {
+          transform: scale(1.05);
+        }
+
+        .add {
+          background-color: #9bf6ff;
+          border: 1px solid #9bf6ff;
+          border-radius: 10px;
+          box-shadow: 3px 3px 5px 5px rgba(49, 49, 49, 0.2);
+          width: 210px;
+          height: 50px;
+          margin-top: 20px;
+          margin-left: 10px;
+          font-family: kalam;
+          font-size: 2em;
+          font-weight: bold;
+          color: $color;
+          transition: 0.3s;
+        }
+
+        .add:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    .return {
+      background-color: rgb(229, 115, 81, 0.75);
+      cursor: pointer;
+      position: fixed;
+      top: 633px;
+      height: 60px;
+      width: 290px;
+      border-radius: 5px 5px 19px 19px;
+      font-family: kalam;
+      font-size: 1.5em;
+      font-weight: 600;
+      text-decoration: none;
+      color: $color;
+      text-align: center;
+      padding-top: 15px;
+    }
+  }
 }
 
 .iPhone::-webkit-scrollbar {
-    display: none;
+  display: none;
+}
+
+@media (max-height: 800px) {
+  body {
+    margin-top: 50px;
+
+    .addTask {
+      top: 583px;
+    }
+
+    .iPhone {
+      .return {
+        top: 583px;
+      }
+
+      .deleteTaskButton {
+        top: 583px;
+      }
+    }
   }
+}
 
+@media (max-height: 720px) {
+  body {
+    margin-top: 20px;
 
+    .addTask {
+      top: 553px;
+    }
 
+    .iPhone {
+      .return {
+        top: 553px;
+      }
+
+      .deleteTaskButton {
+        top: 553px;
+      }
+    }
+  }
+}
+
+@media (max-height: 650px) {
+  body {
+    margin-top: 5px;
+
+    .addTask {
+      top: 538px;
+    }
+
+    .iPhone {
+      .return {
+        top: 538px;
+      }
+
+      .deleteTaskButton {
+        top: 538px;
+      }
+    }
+  }
+}
